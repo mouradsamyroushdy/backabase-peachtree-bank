@@ -4,18 +4,21 @@ $body-height: calc(100vh - #{$header-height} - #{$footer-height} );
 $bg-image:'/assets/background.jpg';
 
 .header{
-  margin-left: 20px;
+  padding-left: 20px;
   height: $header-height;
   top: 0;
   border-bottom: 1px solid d0d3d7;
+  z-index: 9999;
 }
 .body{
   background-image: url($bg-image);
   background-repeat: no-repeat;
   background-size: cover;
   height: $body-height;
-  margin-top:$header-height;
-  margin-bottom:$footer-height;
+  top:$header-height;
+  bottom:$footer-height;
+  padding-top: 60px;
+  overflow:auto;
 }
 .footer{
   height: $footer-height;
@@ -24,13 +27,14 @@ $bg-image:'/assets/background.jpg';
   border-top: 1px solid d0d3d7;
 }
 .header,.footer{
-  position: fixed;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: center;
+  overflow:hidden;
 }
 .header,.footer,.body{
   width: 100%;
+  position: absolute;
   background-color: #FFFFFF;
+  right: 0;
+  left: 0;
 }

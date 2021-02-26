@@ -1,0 +1,6 @@
+.form-control{
+  &.is-invalid, &:invalid{
+    background-image:none !important;
+    padding-right:$gutter;
+  }
+}

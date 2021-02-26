@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    <i class="bi bi-credit-card-2-back"></i>
+    <span class="ps-2">
+      <strong>Make</strong> Transfer
+    </span>
+  </div>
+  <div class="card-body">
+    <form  class="needs-validation" novalidate [formGroup]="form">
+      <div class="mb-3">
+        <label for="fromAmount" class="form-label">From Account</label>
+        <input [attr.disabled]="true" [value]="fromAccount" type="text" class="form-control" id="fromAmount">
+      </div>
+      <div class="mb-3">
+        <label for="toAmount" class="form-label">To Account</label>
+        <input autocomplete="off" formControlName="toAccount" type="text" class="form-control" id="toAmount" placeholder="type an account name"
+        [ngClass]="{'is-invalid': form.touched && form.get('toAccount')?.invalid}">
+        <div class="invalid-feedback">
+          This field is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text">€</span>
+          <input autocomplete="off" formControlName="amount" type="text" class="form-control" placeholder="specify the amount" id="amount"
+          [class.is-invalid]="form.touched && form.get('amount')?.invalid">
+          <div class="invalid-feedback">
+            <ng-container *ngIf="form.get('amount')?.errors?.decimal">
+              Only positive numbers are allowed ex: 100.50
+            </ng-container>
+            <ng-container *ngIf="form.get('amount')?.errors?.max">
+              There is not enough balance
+            </ng-container>
+            <ng-container *ngIf="form.get('amount')?.errors?.required">
+              This field is required
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="text-end">
+        <app-submit-button (submitForm)="submitForm()"></app-submit-button>
+      </div>
+    </form>
+  </div>
+</div>
