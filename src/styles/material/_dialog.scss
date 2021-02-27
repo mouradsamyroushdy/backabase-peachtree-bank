@@ -1,0 +1,23 @@
+$border: 1px solid #ccc;
+.mat-dialog {
+  &-container {
+    padding: 0px !important;
+    overflow: hidden !important;
+
+    .mat-dialog {
+      &-title,
+      &-content,
+      &-actions {
+        padding: $gutter/2 !important;
+        margin:0px !important;
+      }
+
+      &-title {
+        border-bottom:$border;
+      }
+      &-actions {
+        border-top:$border;
+      }
+    }
+  }
+}

@@ -13,8 +13,8 @@
       </div>
       <div class="mb-3">
         <label for="toAmount" class="form-label">To Account</label>
-        <input autocomplete="off" formControlName="toAccount" type="text" class="form-control" id="toAmount" placeholder="type an account name"
-        [ngClass]="{'is-invalid': form.touched && form.get('toAccount')?.invalid}">
+        <input #toAccountRef tabindex="1" autocomplete="off" formControlName="toAccount" type="text" class="form-control" id="toAmount" placeholder="type an account name"
+        [ngClass]="{'is-invalid': form.dirty && form.get('toAccount')?.invalid}">
         <div class="invalid-feedback">
           This field is required
         </div>
@@ -23,8 +23,8 @@
         <label for="amount" class="form-label">Amount</label>
         <div class="input-group has-validation">
           <span class="input-group-text">€</span>
-          <input autocomplete="off" formControlName="amount" type="text" class="form-control" placeholder="specify the amount" id="amount"
-          [class.is-invalid]="form.touched && form.get('amount')?.invalid">
+          <input tabindex="2" autocomplete="off" formControlName="amount" type="text" class="form-control" placeholder="specify the amount" id="amount"
+          [class.is-invalid]="form.dirty && form.get('amount')?.invalid">
           <div class="invalid-feedback">
             <ng-container *ngIf="form.get('amount')?.errors?.decimal">
               Only positive numbers are allowed ex: 100.50
@@ -44,3 +44,15 @@
     </form>
   </div>
 </div>
+
+<ng-template #invalidTransactionFormRef>
+  <label><i class="bi bi-exclamation-circle-fill text-danger"></i>&nbsp; Failed</label>
+  <hr/>
+  <p>Can not submit transfer with invalid parameters, check form errors.</p>
+</ng-template>
+
+<ng-template #successfulTransactionRef>
+  <label><i class="bi bi-check2 text-success"></i>&nbsp; Succeeded</label>
+  <hr/>
+  <p>Transaction is successfully submitted.</p>
+</ng-template>

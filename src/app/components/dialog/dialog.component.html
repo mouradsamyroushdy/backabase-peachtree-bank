@@ -1,0 +1,6 @@
+<div class="header">
+  <ng-content select="[mat-dialog-title]"></ng-content>
+  <a class="close" title="close" (click)="close.emit()"><i class="bi bi-x"></i></a>
+</div>
+<ng-content select="[mat-dialog-content]"></ng-content>
+<ng-content select="[mat-dialog-actions]"></ng-content>

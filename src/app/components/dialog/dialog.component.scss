@@ -1,0 +1,28 @@
+.header {
+  position: relative;
+  .close {
+    $base: 24px;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    width: $base;
+    height: $base;
+    font-size: $base;
+
+    &,
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: #666;
+    }
+    .bi {
+      display: inline-flex;
+
+      &::before {
+        font-weight: bold !important;
+      }
+    }
+  }
+}

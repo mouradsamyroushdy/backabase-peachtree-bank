@@ -12,6 +12,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     MakeTransferComponent,
     ReviewTransferDialogComponent,
     ErrorDialogComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +31,12 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
