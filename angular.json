@@ -32,6 +32,9 @@
               "./node_modules/overlayscrollbars/css/OverlayScrollbars.css",
               "src/styles/main.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           },
           "configurations": {

@@ -1,27 +1,29 @@
 <app-dialog (close)="onClose()">
   <!--(Header)-->
-  <h2 mat-dialog-title><span><strong>Review</strong> Transfer</span></h2>
+  <h3 mat-dialog-title><span class="fw-bold">Review</span> Transfer</h3>
 
   <!--(Content)-->
   <div mat-dialog-content>
-    <p><i>Are you ready to send out this transfer?</i></p>
+    <p class="fst-italic">Are you ready to send out this transfer?</p>
 
     <!--(Account)-->
     <div class="mt-3">
-      <strong>It will be send to account:</strong>
-      <div>{{data.account}}</div>
+      <div class="fw-bold">It will be send to account:</div>
+      <div>{{ data.account }}</div>
     </div>
 
     <!--(Amount)-->
     <div class="mt-3">
-      <strong>With the amount of:</strong>
-      <div>€ {{data.amount}}</div>
+      <div class="fw-bold">With the amount of:</div>
+      <div>€ {{ data.amount }}</div>
     </div>
   </div>
 
   <!--(Action)-->
   <div mat-dialog-actions align="end">
     <button class="btn btn-default" mat-button mat-dialog-close>Close</button>
-    <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial>Send Transfer</button>
+    <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      Send Transfer
+    </button>
   </div>
 </app-dialog>

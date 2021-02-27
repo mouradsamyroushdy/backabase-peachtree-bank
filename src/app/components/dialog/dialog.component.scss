@@ -1,23 +1,30 @@
+@import 'variables';
+
 .header {
   position: relative;
   .close {
-    $base: 24px;
+    $base: 14px;
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: $gutter/2;
+    right: $gutter/2;
     cursor: pointer;
     display: inline-flex;
     width: $base;
     height: $base;
     font-size: $base;
+    opacity: 0.5;
+    color: #000;
 
+    &:hover,
+    &:active {
+      opacity: 1;
+    }
     &,
     &:hover,
     &:active {
       text-decoration: none;
-      color: #666;
     }
-    .bi {
+    .lni {
       display: inline-flex;
 
       &::before {
