@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { TransactionsService } from 'src/app/services';
 import { TransactionDetails } from '../../models/transaction.model';
 
@@ -9,11 +9,7 @@ import { TransactionDetails } from '../../models/transaction.model';
   styleUrls: ['./transactions.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TransactionsComponent implements OnInit {
-  transactions$: Observable<Array<TransactionDetails>>;
-  constructor(private transactionsService: TransactionsService) {}
-
-  ngOnInit(): void {
-    this.transactions$ = this.transactionsService.getTransactions();
-  }
+export class TransactionsComponent {
+  filter: string;
+  @Input() transactions: Array<TransactionDetails>;
 }

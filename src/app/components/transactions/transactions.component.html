@@ -1,13 +1,18 @@
 <div class="card">
   <div class="card-header">
-    <i class="bi bi-list-ul"></i>
+    <i class="lni lni-list"></i>
     <span class="ps-2"> Transactions <strong>List</strong></span>
   </div>
   <div class="card-body">
-    <div class="filter"></div>
+    <div class="filter">
+      <app-filter (inputChange)="filter = $event"></app-filter>
+    </div>
     <overlay-scrollbars>
       <div class="transactions">
-        <div *ngFor="let transaction of transactions$ | async" class="transaction">
+        <div
+          class="transaction"
+          *ngFor="let transaction of transactions | filter: 'merchant.name':filter"
+        >
           <app-transaction-item>
             <span
               data-test-hook="transactionColour"

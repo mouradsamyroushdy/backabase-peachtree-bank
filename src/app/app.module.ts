@@ -17,6 +17,7 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
+import { FilterPipe } from './filters';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
     ErrorDialogComponent,
     DialogComponent,
     TransactionsComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
     MatIconModule,
     MatSnackBarModule,
     HttpClientModule,
-    OverlayscrollbarsModule
+    OverlayscrollbarsModule,
   ],
   providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 } }],
   bootstrap: [AppComponent],

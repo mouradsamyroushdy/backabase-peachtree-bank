@@ -5,6 +5,8 @@ import { decimalValidator } from 'src/app/validators';
 import { ReviewTransferDialogComponent } from '../review-transfer-dialog/review-transfer-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, of } from 'rxjs';
+import { TransactionsService } from 'src/app/services';
+import { NewTransfer } from '../../models/new-transfer.model';
 
 @Component({
   selector: 'app-make-transfer',
@@ -27,7 +29,11 @@ export class MakeTransferComponent implements OnInit {
   //#endregion ----------------------------------
 
   //#region ------------------------------------- Lifecycle
-  constructor(private dialog: MatDialog, private snackbar: MatSnackBar) {}
+  constructor(
+    private transactionsService: TransactionsService,
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loadProfile();
@@ -95,8 +101,15 @@ export class MakeTransferComponent implements OnInit {
   /**
    * Submit transfer to backend API when exists.
    */
-  private sendTransfer(): Observable<any> {
-    return of(null);
+  private sendTransfer(): Observable<boolean> {
+    const transfer: NewTransfer = {
+      toAccount: this.form.get('toAccount')?.value,
+      amount: this.form.get('amount')?.value,
+      fromAccount: this.fromAccount,
+      currencyCode: 'EUR',
+    };
+
+    return this.transactionsService.addTransfer(transfer);
   }
   //#endregion ----------------------------------
 }
