@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header">
+    <i class="bi bi-list-ul"></i>
+    <span class="ps-2"> Transactions <strong>List</strong></span>
+  </div>
+  <div class="card-body">
+    <div class="filter"></div>
+    <overlay-scrollbars>
+      <div class="transactions">
+        <div *ngFor="let transaction of transactions$ | async" class="transaction">
+          <app-transaction-item>
+            <span
+              data-test-hook="transactionColour"
+              [ngStyle]="{ 'background-color': transaction.categoryCode }"
+            ></span>
+            <span data-test-hook="transactionDate">
+              {{ transaction.dates?.valueDate | date: 'MMM. dd' }}
+            </span>
+            <span data-test-hook="transactionMerchantName">
+              {{ transaction.merchant?.name }}
+            </span>
+            <span data-test-hook="transactionType">
+              {{ transaction.transaction?.type }}
+            </span>
+            <span
+              data-test-hook="transactionAmount"
+              [class.credit]="transaction.transaction?.type == 'Salaries'"
+            >
+              € {{ transaction.transaction?.amountCurrency?.amount }}
+            </span>
+          </app-transaction-item>
+        </div>
+      </div>
+    </overlay-scrollbars>
+  </div>
+</div>

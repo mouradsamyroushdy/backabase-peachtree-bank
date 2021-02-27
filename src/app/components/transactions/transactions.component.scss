@@ -1,0 +1,43 @@
+.transactions {
+  max-height: 50vh;
+}
+.transaction {
+  padding: 15px 15px 15px 0px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
+
+  app-transaction-item {
+    display: flex;
+    align-items: center;
+    [data-test-hook='transactionColour'] {
+      width: 4px;
+      background-color: red;
+      margin-right: 10px;
+      left: 0px;
+      align-self: stretch;
+    }
+    [data-test-hook='transactionDate'] {
+      width: 50px;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+    .merchant-details {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 0px;
+    }
+    [data-test-hook='transactionType'] {
+      color: #aaa;
+      font-size: 12px;
+    }
+    [data-test-hook='transactionAmount'] {
+      &.credit {
+        color: green;
+      }
+      color: red;
+      margin-left: auto;
+    }
+  }
+}

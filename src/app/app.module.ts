@@ -8,12 +8,15 @@ import { BbUIModule } from './bb-ui/bb-ui.module';
 import { MakeTransferComponent } from './components/make-transfer/make-transfer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReviewTransferDialogComponent } from './components/review-transfer-dialog/review-transfer-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { DialogComponent } from './components/dialog/dialog.component';
-import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { TransactionsComponent } from './components/transactions/transactions.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/materia
     ReviewTransferDialogComponent,
     ErrorDialogComponent,
     DialogComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,11 +36,11 @@ import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/materia
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule,
+    OverlayscrollbarsModule
   ],
-  providers: [
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}}
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 } }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
