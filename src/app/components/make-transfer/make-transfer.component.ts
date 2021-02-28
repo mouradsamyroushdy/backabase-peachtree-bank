@@ -1,12 +1,20 @@
+//#region --------------------------------------- ANGULAR
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+//#endregion ------------------------------------
+
+//#region --------------------------------------- 3RD-PARTIES
 import { MatDialog } from '@angular/material/dialog';
-import { decimalValidator } from 'src/app/validators';
-import { ReviewTransferDialogComponent } from '../review-transfer-dialog/review-transfer-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, of } from 'rxjs';
-import { TransactionsService } from 'src/app/services';
-import { NewTransfer } from '../../models/new-transfer.model';
+import { Observable } from 'rxjs';
+//#endregion ------------------------------------
+
+//#region --------------------------------------- APPLICATION
+import { decimalValidator } from '../../validators';
+import { TransactionsService } from '../../services';
+import { NewTransfer } from '../../models';
+import { ReviewTransferDialogComponent } from '../review-transfer-dialog/review-transfer-dialog.component';
+//#endregion ------------------------------------
 
 @Component({
   selector: 'app-make-transfer',
@@ -14,7 +22,7 @@ import { NewTransfer } from '../../models/new-transfer.model';
   styleUrls: ['./make-transfer.component.scss'],
 })
 export class MakeTransferComponent implements OnInit {
-  //#region ------------------------------------- Variables
+  //#region ------------------------------------- VARIABLES
   readonly amount: number = 5824.76;
   form: FormGroup = this.getForm();
   currentProfile?: Object;
@@ -22,13 +30,13 @@ export class MakeTransferComponent implements OnInit {
   fromAccount?: string;
   //#endregion ----------------------------------
 
-  //#region ------------------------------------- Children
+  //#region ------------------------------------- CHILDREN
   @ViewChild('invalidTransactionFormRef') invalidTransactionFormRef: TemplateRef<any>;
   @ViewChild('successfulTransactionRef') successfulTransactionRef: TemplateRef<any>;
   @ViewChild('toAccountRef') toAccountRef: ElementRef<any>;
   //#endregion ----------------------------------
 
-  //#region ------------------------------------- Lifecycle
+  //#region ------------------------------------- LIFECYCLE
   constructor(
     private transactionsService: TransactionsService,
     private dialog: MatDialog,
@@ -40,7 +48,7 @@ export class MakeTransferComponent implements OnInit {
   }
   //#endregion ----------------------------------
 
-  //#region ------------------------------------- Public-Methods
+  //#region ------------------------------------- PUBLIC-METHODS
   /**
    * Validate make-transfer form, then confirm actions.
    */
@@ -55,7 +63,7 @@ export class MakeTransferComponent implements OnInit {
   }
   //#endregion ----------------------------------
 
-  //#region ------------------------------------- Private-Methods
+  //#region ------------------------------------- PRIVATE-METHODS
   private getForm(): FormGroup {
     return new FormGroup({
       fromAccount: new FormControl(null),

@@ -1,6 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { TransactionsService } from 'src/app/services';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { TransactionDetails } from '../../models/transaction.model';
 
 @Component({
@@ -10,6 +8,6 @@ import { TransactionDetails } from '../../models/transaction.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class TransactionsComponent {
-  filter: string;
-  @Input() transactions: Array<TransactionDetails>;
+  filter: string | undefined;
+  @Input() transactions: Array<TransactionDetails> = [];
 }
