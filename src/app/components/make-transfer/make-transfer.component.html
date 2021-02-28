@@ -1,30 +1,50 @@
 <div class="card">
   <div class="card-header">
     <i class="lni lni-credit-cards"></i>
-    <span class="ps-2">
-      <strong>Make</strong> Transfer
-    </span>
+    <span class="ps-2"> <strong>Make</strong> Transfer </span>
   </div>
   <div class="card-body">
-    <form  class="needs-validation" novalidate [formGroup]="form">
+    <form class="needs-validation" novalidate [formGroup]="form">
       <div class="mb-3">
         <label for="fromAmount" class="form-label">From Account</label>
-        <input [attr.disabled]="true" [value]="fromAccount" type="text" class="form-control" id="fromAmount">
+        <input
+          data-test="from-account"
+          [attr.disabled]="true"
+          [value]="fromAccount"
+          type="text"
+          class="form-control"
+          id="fromAmount"
+        />
       </div>
       <div class="mb-3">
         <label for="toAmount" class="form-label">To Account</label>
-        <input #toAccountRef tabindex="1" autocomplete="off" formControlName="toAccount" type="text" class="form-control" id="toAmount" placeholder="type an account name"
-        [ngClass]="{'is-invalid': form.dirty && form.get('toAccount')?.invalid}">
-        <div class="invalid-feedback">
-          This field is required
-        </div>
+        <input
+          #toAccountRef
+          tabindex="1"
+          autocomplete="off"
+          formControlName="toAccount"
+          type="text"
+          class="form-control"
+          id="toAmount"
+          placeholder="type an account name"
+          [ngClass]="{ 'is-invalid': form.dirty && form.get('toAccount')?.invalid }"
+        />
+        <div class="invalid-feedback">This field is required</div>
       </div>
       <div class="mb-3">
         <label for="amount" class="form-label">Amount</label>
         <div class="input-group has-validation">
           <span class="input-group-text">€</span>
-          <input tabindex="2" autocomplete="off" formControlName="amount" type="text" class="form-control" placeholder="specify the amount" id="amount"
-          [class.is-invalid]="form.dirty && form.get('amount')?.invalid">
+          <input
+            tabindex="2"
+            autocomplete="off"
+            formControlName="amount"
+            type="text"
+            class="form-control"
+            placeholder="specify the amount"
+            id="amount"
+            [class.is-invalid]="form.dirty && form.get('amount')?.invalid"
+          />
           <div class="invalid-feedback">
             <ng-container *ngIf="form.get('amount')?.errors?.decimal">
               Only positive numbers are allowed ex: 100.50
@@ -47,12 +67,12 @@
 
 <ng-template #invalidTransactionFormRef>
   <label><i class="lni lni-cross-circle text-danger"></i>&nbsp; Failed</label>
-  <hr/>
+  <hr />
   <p>Can not submit transfer with invalid parameters, check form errors.</p>
 </ng-template>
 
 <ng-template #successfulTransactionRef>
   <label><i class="lni lni-checkmark text-success"></i>&nbsp; Succeeded</label>
-  <hr/>
+  <hr />
   <p>Transaction is successfully submitted.</p>
 </ng-template>

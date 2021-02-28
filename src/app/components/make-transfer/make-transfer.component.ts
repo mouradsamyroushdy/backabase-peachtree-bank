@@ -54,6 +54,7 @@ export class MakeTransferComponent implements OnInit {
    */
   submitForm(): void {
     if (!this.form.dirty) this.form.markAsDirty();
+    console.log(this.form.valid);
 
     if (this.form.valid) {
       this.openReviewTransferDialog();

@@ -9,20 +9,26 @@
     <!--(Account)-->
     <div class="mt-3">
       <div class="fw-bold">It will be send to account:</div>
-      <div>{{ data.account }}</div>
+      <div data-test="account">{{ data.account }}</div>
     </div>
 
     <!--(Amount)-->
     <div class="mt-3">
       <div class="fw-bold">With the amount of:</div>
-      <div>€ {{ data.amount }}</div>
+      <div data-test="amount">€ {{ data.amount }}</div>
     </div>
   </div>
 
   <!--(Action)-->
   <div mat-dialog-actions align="end">
-    <button class="btn btn-default" mat-button mat-dialog-close>Close</button>
-    <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    <button data-test="close" class="btn btn-default" mat-button mat-dialog-close>Close</button>
+    <button
+      data-test="send"
+      class="btn btn-primary"
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+    >
       Send Transfer
     </button>
   </div>
