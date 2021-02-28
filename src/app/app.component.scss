@@ -8,7 +8,7 @@ $bg-image:'/assets/background.jpg';
   height: $header-height;
   top: 0;
   border-bottom: 1px solid d0d3d7;
-  z-index: 9999;
+  // z-index: 9999;
 }
 .body{
   background-image: url($bg-image);
